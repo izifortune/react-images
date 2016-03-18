@@ -51,7 +51,7 @@ class Lightbox extends Component {
       if (utils.canUseDOM) window.removeEventListener('resize', this.handleResize);
     }
 
-    if (nextProps.isOpen) {
+    if (nextProps.isOpen && this.props.overflowHidden) {
       if (utils.canUseDOM) document.body.style.overflow = 'hidden';
     } else {
       if (utils.canUseDOM) document.body.style.overflow = null;
@@ -271,6 +271,7 @@ Lightbox.propTypes = {
   showCloseButton: PropTypes.bool,
   showImageCount: PropTypes.bool,
   width: PropTypes.number,
+  overflowHidden: PropTypes.bool
 };
 
 Lightbox.defaultProps = {
@@ -280,6 +281,7 @@ Lightbox.defaultProps = {
   showCloseButton: true,
   showImageCount: true,
   width: 900,
+  overflowHidden: true
 };
 
 export default useSheet(Lightbox, defaultStyles);
