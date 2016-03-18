@@ -2,12 +2,12 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-	value: true
+  value: true
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -22,81 +22,86 @@ var _react = require('react');
 var _react2 = _interopRequireDefault(_react);
 
 var Fade = (function (_Component) {
-	_inherits(Fade, _Component);
+  _inherits(Fade, _Component);
 
-	function Fade() {
-		_classCallCheck(this, Fade);
+  function Fade() {
+    _classCallCheck(this, Fade);
 
-		_get(Object.getPrototypeOf(Fade.prototype), 'constructor', this).call(this);
-		this._showElement = this._showElement.bind(this);
-		this._hideElement = this._hideElement.bind(this);
-	}
+    _get(Object.getPrototypeOf(Fade.prototype), 'constructor', this).call(this);
+    this._showElement = this._showElement.bind(this);
+    this._hideElement = this._hideElement.bind(this);
+  }
 
-	_createClass(Fade, [{
-		key: 'componentWillAppear',
-		value: function componentWillAppear(callback) {
-			setTimeout(callback, 1); // need at least one tick to fire transition
-		}
-	}, {
-		key: 'componentDidAppear',
-		value: function componentDidAppear() {
-			this._showElement();
-		}
-	}, {
-		key: 'componentWillEnter',
-		value: function componentWillEnter(callback) {
-			setTimeout(callback, 1);
-		}
-	}, {
-		key: 'componentDidEnter',
-		value: function componentDidEnter() {
-			this._showElement();
-		}
-	}, {
-		key: 'componentWillLeave',
-		value: function componentWillLeave(callback) {
-			this._hideElement();
-			setTimeout(callback, this.props.duration);
-		}
-	}, {
-		key: 'componentDidLeave',
-		value: function componentDidLeave() {}
-	}, {
-		key: '_showElement',
-		value: function _showElement() {
-			var el = this.refs.element;
-			el.style.opacity = 1;
-		}
-	}, {
-		key: '_hideElement',
-		value: function _hideElement() {
-			var el = this.refs.element;
-			el.style.opacity = 0;
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var props = _extends({}, this.props);
-			var style = {
-				opacity: 0,
-				WebkitTransition: 'opacity ' + this.props.duration + 'ms ease-out',
-				msTransition: 'opacity ' + this.props.duration + 'ms ease-out',
-				transition: 'opacity ' + this.props.duration + 'ms ease-out'
-			};
-			props.style = _extends(style, this.props.style);
-			return _react2['default'].createElement(this.props.component, props, this.props.children);
-		}
-	}]);
+  _createClass(Fade, [{
+    key: 'componentWillAppear',
+    value: function componentWillAppear(callback) {
+      setTimeout(callback, 1); // need at least one tick to fire transition
+    }
+  }, {
+    key: 'componentDidAppear',
+    value: function componentDidAppear() {
+      this._showElement();
+    }
+  }, {
+    key: 'componentWillEnter',
+    value: function componentWillEnter(callback) {
+      setTimeout(callback, 1);
+    }
+  }, {
+    key: 'componentDidEnter',
+    value: function componentDidEnter() {
+      this._showElement();
+    }
+  }, {
+    key: 'componentWillLeave',
+    value: function componentWillLeave(callback) {
+      this._hideElement();
+      setTimeout(callback, this.props.duration);
+    }
+  }, {
+    key: 'componentDidLeave',
+    value: function componentDidLeave() {}
+  }, {
+    key: '_showElement',
+    value: function _showElement() {
+      var el = this.refs.element;
+      el.style.opacity = 1;
+    }
+  }, {
+    key: '_hideElement',
+    value: function _hideElement() {
+      var el = this.refs.element;
+      el.style.opacity = 0;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var props = _extends({}, this.props);
+      var style = {
+        opacity: 0,
+        WebkitTransition: 'opacity ' + this.props.duration + 'ms ease-out',
+        msTransition: 'opacity ' + this.props.duration + 'ms ease-out',
+        transition: 'opacity ' + this.props.duration + 'ms ease-out'
+      };
+      props.style = _extends(style, this.props.style);
+      return _react2['default'].createElement(this.props.component, props, this.props.children);
+    }
+  }]);
 
-	return Fade;
+  return Fade;
 })(_react.Component);
 
-;
+Fade.propTypes = {
+  duration: _react.PropTypes.integer,
+  style: _react.PropTypes.object,
+  children: _react.PropTypes.any,
+  component: _react.PropTypes.any
+};
 
 Fade.defaultProps = {
-	component: 'div',
-	duration: 200,
-	ref: 'element'
+  component: 'div',
+  duration: 200,
+  ref: 'element'
 };
 
 exports['default'] = Fade;
@@ -106,14 +111,14 @@ module.exports = exports['default'];
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-	value: true
+  value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -130,28 +135,26 @@ var _icons = require('./icons');
 var _icons2 = _interopRequireDefault(_icons);
 
 var Icon = (function (_Component) {
-	_inherits(Icon, _Component);
+  _inherits(Icon, _Component);
 
-	function Icon() {
-		_classCallCheck(this, Icon);
+  function Icon() {
+    _classCallCheck(this, Icon);
 
-		_get(Object.getPrototypeOf(Icon.prototype), 'constructor', this).apply(this, arguments);
-	}
+    _get(Object.getPrototypeOf(Icon.prototype), 'constructor', this).apply(this, arguments);
+  }
 
-	_createClass(Icon, [{
-		key: 'render',
-		value: function render() {
-			return _react2['default'].createElement('span', _extends({ dangerouslySetInnerHTML: { __html: _icons2['default'][this.props.type] } }, this.props));
-		}
-	}]);
+  _createClass(Icon, [{
+    key: 'render',
+    value: function render() {
+      return _react2['default'].createElement('span', _extends({ dangerouslySetInnerHTML: { __html: _icons2['default'][this.props.type] } }, this.props));
+    }
+  }]);
 
-	return Icon;
+  return Icon;
 })(_react.Component);
 
-;
-
 Icon.propTypes = {
-	type: _react2['default'].PropTypes.oneOf(Object.keys(_icons2['default']))
+  type: _react.PropTypes.oneOf(Object.keys(_icons2['default']))
 };
 
 exports['default'] = Icon;
@@ -161,14 +164,14 @@ module.exports = exports['default'];
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-	value: true
+  value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -187,49 +190,52 @@ var _reactAddonsTransitionGroup2 = _interopRequireDefault(_reactAddonsTransition
 var _reactDom = require('react-dom');
 
 var Portal = (function (_Component) {
-	_inherits(Portal, _Component);
+  _inherits(Portal, _Component);
 
-	function Portal() {
-		_classCallCheck(this, Portal);
+  function Portal() {
+    _classCallCheck(this, Portal);
 
-		_get(Object.getPrototypeOf(Portal.prototype), 'constructor', this).call(this);
-		this.portalElement = null;
-	}
+    _get(Object.getPrototypeOf(Portal.prototype), 'constructor', this).call(this);
+    this.portalElement = null;
+  }
 
-	_createClass(Portal, [{
-		key: 'render',
-		value: function render() {
-			return null;
-		}
-	}, {
-		key: 'componentDidMount',
-		value: function componentDidMount() {
-			var p = document.createElement('div');
-			document.body.appendChild(p);
-			this.portalElement = p;
-			this.componentDidUpdate();
-		}
-	}, {
-		key: 'componentWillUnmount',
-		value: function componentWillUnmount() {
-			document.body.removeChild(this.portalElement);
-		}
-	}, {
-		key: 'componentDidUpdate',
-		value: function componentDidUpdate() {
-			(0, _reactDom.render)(_react2['default'].createElement(
-				_reactAddonsTransitionGroup2['default'],
-				_extends({}, this.props, { component: 'div' }),
-				this.props.children
-			), this.portalElement);
-		}
-	}]);
+  _createClass(Portal, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var p = document.createElement('div');
+      document.body.appendChild(p);
+      this.portalElement = p;
+      this.componentDidUpdate();
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      (0, _reactDom.render)(_react2['default'].createElement(
+        _reactAddonsTransitionGroup2['default'],
+        _extends({}, this.props, { component: 'div' }),
+        this.props.children
+      ), this.portalElement);
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      document.body.removeChild(this.portalElement);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return null;
+    }
+  }]);
 
-	return Portal;
+  return Portal;
 })(_react.Component);
 
 exports['default'] = Portal;
-;
+
+Portal.propTypes = {
+  children: _react.PropTypes.any
+};
 module.exports = exports['default'];
 
 },{"react":undefined,"react-addons-transition-group":undefined,"react-dom":undefined}],4:[function(require,module,exports){
@@ -251,16 +257,16 @@ module.exports = '<svg fill="white" version="1.1" xmlns="http://www.w3.org/2000/
 'use strict';
 
 module.exports = {
-	arrowLeft: require('./arrowLeft'),
-	arrowRight: require('./arrowRight'),
-	close: require('./close')
+  arrowLeft: require('./arrowLeft'),
+  arrowRight: require('./arrowRight'),
+  close: require('./close')
 };
 
 },{"./arrowLeft":4,"./arrowRight":5,"./close":6}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-	value: true
+  value: true
 });
 var CLOSE_SIZE = 20;
 var ARROW_HEIGHT = 120;
@@ -268,154 +274,170 @@ var GAP_BOTTOM = 50;
 var GAP_TOP = 40;
 
 var styles = {
-	// SCENE
-	container: {
-		backgroundColor: 'rgba(0,0,0,0.8)',
-		boxSizing: 'border-box',
-		height: '100%',
-		left: 0,
-		padding: '0 10px',
-		position: 'fixed',
-		textAlign: 'center',
-		top: 0,
-		width: '100%',
-		zIndex: 1001
-	},
-	content: {
-		display: 'inline-block',
-		margin: '0 auto',
-		maxWidth: '100%',
-		position: 'relative',
-		verticalAlign: 'middle'
-	},
-	contentHeightShim: {
-		display: 'inline-block',
-		height: '100%',
-		lineHeight: 0,
-		verticalAlign: 'middle'
-	},
+  // SCENE
+  container: {
+    backgroundColor: 'rgba(0,0,0,0.8)',
+    boxSizing: 'border-box',
+    height: '100%',
+    left: 0,
+    padding: '0 10px',
+    position: 'fixed',
+    textAlign: 'center',
+    top: 0,
+    width: '100%',
+    zIndex: 1001
+  },
+  content: {
+    display: 'inline-block',
+    margin: '0 auto',
+    maxWidth: '100%',
+    position: 'relative',
+    verticalAlign: 'middle'
+  },
+  contentHeightShim: {
+    display: 'inline-block',
+    height: '100%',
+    lineHeight: 0,
+    verticalAlign: 'middle'
+  },
 
-	// IMAGES
-	image: {
-		boxSizing: 'border-box',
-		display: 'block',
-		lineHeight: 0,
-		maxWidth: '100%',
-		margin: '0 auto',
-		paddingBottom: 50,
-		paddingTop: 40,
-		height: 'auto',
-		width: 'auto',
+  // IMAGES
+  image: {
+    boxSizing: 'border-box',
+    display: 'block',
+    lineHeight: 0,
+    maxWidth: '100%',
+    margin: '0 auto',
+    paddingBottom: 50,
+    paddingTop: 40,
+    height: 'auto',
+    width: 'auto',
 
-		// disable user select
-		WebkitTouchCallout: 'none',
-		userSelect: 'none'
+    // disable user select
+    WebkitTouchCallout: 'none',
+    userSelect: 'none'
 
-	},
-	figure: {
-		lineHeight: 1,
-		minHeight: 200,
-		minWidth: 300,
-		margin: 0,
-		textAlign: 'center'
-	},
-	figureShadow: {
-		bottom: GAP_BOTTOM,
-		boxShadow: '0 0 8px -2px rgba(0,0,0,.6)',
-		display: 'block',
-		height: 'auto',
-		left: 0,
-		position: 'absolute',
-		right: 0,
-		top: GAP_TOP,
-		width: 'auto',
-		zIndex: -1
-	},
-	footer: {
-		color: 'white',
-		lineHeight: 1.3,
-		height: GAP_BOTTOM,
-		marginTop: -GAP_BOTTOM,
-		paddingTop: 5,
-		position: 'absolute',
-		textAlign: 'left',
-		top: '100%',
-		left: 0,
-		width: '100%',
-		cursor: 'auto'
-	},
-	footerCount: {
-		float: 'right',
-		fontSize: '.85em',
-		opacity: .75
-	},
-	footerCaption: {
-		paddingRight: 80
-	},
+  },
+  figure: {
+    backgroundImage: 'url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nNDhweCcgaGVpZ2h0PSc0OHB4JyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCIgY2xhc3M9InVpbC1kZWZhdWx0Ij48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0ibm9uZSIgY2xhc3M9ImJrIj48L3JlY3Q+PHJlY3QgIHg9JzQ2LjUnIHk9JzQwJyB3aWR0aD0nNycgaGVpZ2h0PScyMCcgcng9JzUnIHJ5PSc1JyBmaWxsPScjZmZmZmZmJyB0cmFuc2Zvcm09J3JvdGF0ZSgwIDUwIDUwKSB0cmFuc2xhdGUoMCAtMzApJz4gIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9J29wYWNpdHknIGZyb209JzEnIHRvPScwJyBkdXI9JzFzJyBiZWdpbj0nMHMnIHJlcGVhdENvdW50PSdpbmRlZmluaXRlJy8+PC9yZWN0PjxyZWN0ICB4PSc0Ni41JyB5PSc0MCcgd2lkdGg9JzcnIGhlaWdodD0nMjAnIHJ4PSc1JyByeT0nNScgZmlsbD0nI2ZmZmZmZicgdHJhbnNmb3JtPSdyb3RhdGUoMzAgNTAgNTApIHRyYW5zbGF0ZSgwIC0zMCknPiAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0nb3BhY2l0eScgZnJvbT0nMScgdG89JzAnIGR1cj0nMXMnIGJlZ2luPScwLjA4MzMzMzMzMzMzMzMzMzMzcycgcmVwZWF0Q291bnQ9J2luZGVmaW5pdGUnLz48L3JlY3Q+PHJlY3QgIHg9JzQ2LjUnIHk9JzQwJyB3aWR0aD0nNycgaGVpZ2h0PScyMCcgcng9JzUnIHJ5PSc1JyBmaWxsPScjZmZmZmZmJyB0cmFuc2Zvcm09J3JvdGF0ZSg2MCA1MCA1MCkgdHJhbnNsYXRlKDAgLTMwKSc+ICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSdvcGFjaXR5JyBmcm9tPScxJyB0bz0nMCcgZHVyPScxcycgYmVnaW49JzAuMTY2NjY2NjY2NjY2NjY2NjZzJyByZXBlYXRDb3VudD0naW5kZWZpbml0ZScvPjwvcmVjdD48cmVjdCAgeD0nNDYuNScgeT0nNDAnIHdpZHRoPSc3JyBoZWlnaHQ9JzIwJyByeD0nNScgcnk9JzUnIGZpbGw9JyNmZmZmZmYnIHRyYW5zZm9ybT0ncm90YXRlKDkwIDUwIDUwKSB0cmFuc2xhdGUoMCAtMzApJz4gIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9J29wYWNpdHknIGZyb209JzEnIHRvPScwJyBkdXI9JzFzJyBiZWdpbj0nMC4yNXMnIHJlcGVhdENvdW50PSdpbmRlZmluaXRlJy8+PC9yZWN0PjxyZWN0ICB4PSc0Ni41JyB5PSc0MCcgd2lkdGg9JzcnIGhlaWdodD0nMjAnIHJ4PSc1JyByeT0nNScgZmlsbD0nI2ZmZmZmZicgdHJhbnNmb3JtPSdyb3RhdGUoMTIwIDUwIDUwKSB0cmFuc2xhdGUoMCAtMzApJz4gIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9J29wYWNpdHknIGZyb209JzEnIHRvPScwJyBkdXI9JzFzJyBiZWdpbj0nMC4zMzMzMzMzMzMzMzMzMzMzcycgcmVwZWF0Q291bnQ9J2luZGVmaW5pdGUnLz48L3JlY3Q+PHJlY3QgIHg9JzQ2LjUnIHk9JzQwJyB3aWR0aD0nNycgaGVpZ2h0PScyMCcgcng9JzUnIHJ5PSc1JyBmaWxsPScjZmZmZmZmJyB0cmFuc2Zvcm09J3JvdGF0ZSgxNTAgNTAgNTApIHRyYW5zbGF0ZSgwIC0zMCknPiAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0nb3BhY2l0eScgZnJvbT0nMScgdG89JzAnIGR1cj0nMXMnIGJlZ2luPScwLjQxNjY2NjY2NjY2NjY2NjdzJyByZXBlYXRDb3VudD0naW5kZWZpbml0ZScvPjwvcmVjdD48cmVjdCAgeD0nNDYuNScgeT0nNDAnIHdpZHRoPSc3JyBoZWlnaHQ9JzIwJyByeD0nNScgcnk9JzUnIGZpbGw9JyNmZmZmZmYnIHRyYW5zZm9ybT0ncm90YXRlKDE4MCA1MCA1MCkgdHJhbnNsYXRlKDAgLTMwKSc+ICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSdvcGFjaXR5JyBmcm9tPScxJyB0bz0nMCcgZHVyPScxcycgYmVnaW49JzAuNXMnIHJlcGVhdENvdW50PSdpbmRlZmluaXRlJy8+PC9yZWN0PjxyZWN0ICB4PSc0Ni41JyB5PSc0MCcgd2lkdGg9JzcnIGhlaWdodD0nMjAnIHJ4PSc1JyByeT0nNScgZmlsbD0nI2ZmZmZmZicgdHJhbnNmb3JtPSdyb3RhdGUoMjEwIDUwIDUwKSB0cmFuc2xhdGUoMCAtMzApJz4gIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9J29wYWNpdHknIGZyb209JzEnIHRvPScwJyBkdXI9JzFzJyBiZWdpbj0nMC41ODMzMzMzMzMzMzMzMzM0cycgcmVwZWF0Q291bnQ9J2luZGVmaW5pdGUnLz48L3JlY3Q+PHJlY3QgIHg9JzQ2LjUnIHk9JzQwJyB3aWR0aD0nNycgaGVpZ2h0PScyMCcgcng9JzUnIHJ5PSc1JyBmaWxsPScjZmZmZmZmJyB0cmFuc2Zvcm09J3JvdGF0ZSgyNDAgNTAgNTApIHRyYW5zbGF0ZSgwIC0zMCknPiAgPGFuaW1hdGUgYXR0cmlidXRlTmFtZT0nb3BhY2l0eScgZnJvbT0nMScgdG89JzAnIGR1cj0nMXMnIGJlZ2luPScwLjY2NjY2NjY2NjY2NjY2NjZzJyByZXBlYXRDb3VudD0naW5kZWZpbml0ZScvPjwvcmVjdD48cmVjdCAgeD0nNDYuNScgeT0nNDAnIHdpZHRoPSc3JyBoZWlnaHQ9JzIwJyByeD0nNScgcnk9JzUnIGZpbGw9JyNmZmZmZmYnIHRyYW5zZm9ybT0ncm90YXRlKDI3MCA1MCA1MCkgdHJhbnNsYXRlKDAgLTMwKSc+ICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSdvcGFjaXR5JyBmcm9tPScxJyB0bz0nMCcgZHVyPScxcycgYmVnaW49JzAuNzVzJyByZXBlYXRDb3VudD0naW5kZWZpbml0ZScvPjwvcmVjdD48cmVjdCAgeD0nNDYuNScgeT0nNDAnIHdpZHRoPSc3JyBoZWlnaHQ9JzIwJyByeD0nNScgcnk9JzUnIGZpbGw9JyNmZmZmZmYnIHRyYW5zZm9ybT0ncm90YXRlKDMwMCA1MCA1MCkgdHJhbnNsYXRlKDAgLTMwKSc+ICA8YW5pbWF0ZSBhdHRyaWJ1dGVOYW1lPSdvcGFjaXR5JyBmcm9tPScxJyB0bz0nMCcgZHVyPScxcycgYmVnaW49JzAuODMzMzMzMzMzMzMzMzMzNHMnIHJlcGVhdENvdW50PSdpbmRlZmluaXRlJy8+PC9yZWN0PjxyZWN0ICB4PSc0Ni41JyB5PSc0MCcgd2lkdGg9JzcnIGhlaWdodD0nMjAnIHJ4PSc1JyByeT0nNScgZmlsbD0nI2ZmZmZmZicgdHJhbnNmb3JtPSdyb3RhdGUoMzMwIDUwIDUwKSB0cmFuc2xhdGUoMCAtMzApJz4gIDxhbmltYXRlIGF0dHJpYnV0ZU5hbWU9J29wYWNpdHknIGZyb209JzEnIHRvPScwJyBkdXI9JzFzJyBiZWdpbj0nMC45MTY2NjY2NjY2NjY2NjY2cycgcmVwZWF0Q291bnQ9J2luZGVmaW5pdGUnLz48L3JlY3Q+PC9zdmc+)',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center center',
+    lineHeight: 1,
+    minHeight: 200,
+    minWidth: 300,
+    margin: 0,
+    textAlign: 'center'
+  },
+  figureShadow: {
+    bottom: GAP_BOTTOM,
+    boxShadow: '0 0 8px -2px rgba(0,0,0,.6)',
+    display: 'block',
+    height: 'auto',
+    left: 0,
+    position: 'absolute',
+    right: 0,
+    top: GAP_TOP,
+    width: 'auto',
+    zIndex: -1
+  },
+  footer: {
+    color: 'white',
+    lineHeight: 1.3,
+    height: GAP_BOTTOM,
+    marginTop: -GAP_BOTTOM,
+    paddingTop: 5,
+    position: 'absolute',
+    textAlign: 'left',
+    top: '100%',
+    left: 0,
+    width: '100%',
+    cursor: 'auto'
+  },
+  footerCount: {
+    float: 'right',
+    fontSize: '.85em',
+    opacity: 0.75
+  },
+  footerCaption: {
+    paddingRight: 80
+  },
 
-	// BUTTONS
-	arrow: {
-		background: 'none',
-		border: 'none',
-		cursor: 'pointer',
-		outline: 'none',
-		marginTop: ARROW_HEIGHT / -2,
-		maxWidth: 80,
-		padding: 20,
-		position: 'absolute',
-		top: '50%',
-		height: ARROW_HEIGHT,
-		width: '16%',
-		zIndex: 1001,
+  // BUTTONS
+  arrow: {
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    outline: 'none',
+    marginTop: ARROW_HEIGHT / -2,
+    maxWidth: 80,
+    padding: 20,
+    position: 'absolute',
+    top: '50%',
+    height: ARROW_HEIGHT,
+    width: '16%',
+    zIndex: 1001,
 
-		// disable user select
-		WebkitTouchCallout: 'none',
-		WebkitUserSelect: 'none',
-		MozUserSelect: 'none',
-		msUserSelect: 'none',
-		userSelect: 'none'
-	},
-	arrowNext: {
-		right: 0
-	},
-	arrowPrev: {
-		left: 0
-	},
-	closeBar: {
-		height: GAP_TOP,
-		left: 0,
-		position: 'absolute',
-		textAlign: 'right',
-		top: 0,
-		width: '100%'
-	},
-	closeButton: {
-		background: 'none',
-		border: 'none',
-		cursor: 'pointer',
-		height: CLOSE_SIZE + 20,
-		outline: 'none',
-		padding: 10,
-		position: 'relative',
-		right: -10,
-		top: 0,
-		width: CLOSE_SIZE + 20
-	}
+    // disable user select
+    WebkitTouchCallout: 'none',
+    WebkitUserSelect: 'none',
+    MozUserSelect: 'none',
+    msUserSelect: 'none',
+    userSelect: 'none'
+  },
+  arrowNext: {
+    right: 0
+  },
+  arrowPrev: {
+    left: 0
+  },
+  closeBar: {
+    height: GAP_TOP,
+    left: 0,
+    position: 'absolute',
+    textAlign: 'right',
+    top: 0,
+    width: '100%'
+  },
+  closeButton: {
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    height: CLOSE_SIZE + 20,
+    outline: 'none',
+    padding: 10,
+    position: 'relative',
+    right: -10,
+    top: 0,
+    width: CLOSE_SIZE + 20
+  }
 };
 
 exports['default'] = styles;
+module.exports = exports['default'];
+
+},{}],9:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+
+exports['default'] = {
+  canUseDOM: canUseDOM
+};
 module.exports = exports['default'];
 
 },{}],"react-images":[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-	value: true
+  value: true
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -453,6 +475,14 @@ var _jssVendorPrefixer = require('jss-vendor-prefixer');
 
 var _jssVendorPrefixer2 = _interopRequireDefault(_jssVendorPrefixer);
 
+var _reactSwipeable = require('react-swipeable');
+
+var _reactSwipeable2 = _interopRequireDefault(_reactSwipeable);
+
+var _utils = require('./utils');
+
+var _utils2 = _interopRequireDefault(_utils);
+
 var _Fade = require('./Fade');
 
 var _Fade2 = _interopRequireDefault(_Fade);
@@ -475,282 +505,320 @@ _jss2['default'].use((0, _jssPx2['default'])());
 _jss2['default'].use((0, _jssVendorPrefixer2['default'])());
 
 var Lightbox = (function (_Component) {
-	_inherits(Lightbox, _Component);
+  _inherits(Lightbox, _Component);
 
-	_createClass(Lightbox, null, [{
-		key: 'theme',
-		value: function theme(themeStyles) {
-			var extStyles = _extends({}, _stylesDefault2['default']);
-			for (var key in extStyles) {
-				if (key in themeStyles) {
-					extStyles[key] = _extends({}, _stylesDefault2['default'][key], themeStyles[key]);
-				}
-			}
-			return extStyles;
-		}
-	}]);
+  _createClass(Lightbox, null, [{
+    key: 'theme',
+    value: function theme(themeStyles) {
+      var extStyles = _extends({}, _stylesDefault2['default']);
+      for (var key in extStyles) {
+        if (key in themeStyles) {
+          extStyles[key] = _extends({}, _stylesDefault2['default'][key], themeStyles[key]);
+        }
+      }
+      return extStyles;
+    }
+  }]);
 
-	function Lightbox() {
-		_classCallCheck(this, Lightbox);
+  function Lightbox() {
+    _classCallCheck(this, Lightbox);
 
-		_get(Object.getPrototypeOf(Lightbox.prototype), 'constructor', this).call(this);
+    _get(Object.getPrototypeOf(Lightbox.prototype), 'constructor', this).call(this);
 
-		this.close = this.close.bind(this);
-		this.gotoNext = this.gotoNext.bind(this);
-		this.gotoPrev = this.gotoPrev.bind(this);
-		this.handleImageClick = this.handleImageClick.bind(this);
-		this.handleKeyboardInput = this.handleKeyboardInput.bind(this);
-		this.handleResize = this.handleResize.bind(this);
-	}
+    this.close = this.close.bind(this);
+    this.gotoNext = this.gotoNext.bind(this);
+    this.gotoPrev = this.gotoPrev.bind(this);
+    this.handleImageClick = this.handleImageClick.bind(this);
+    this.handleKeyboardInput = this.handleKeyboardInput.bind(this);
+    this.handleResize = this.handleResize.bind(this);
+  }
 
-	_createClass(Lightbox, [{
-		key: 'componentWillReceiveProps',
-		value: function componentWillReceiveProps(nextProps) {
-			if (nextProps.isOpen && nextProps.enableKeyboardInput) {
-				if (typeof window !== 'undefined') window.addEventListener('keydown', this.handleKeyboardInput);
-				if (typeof window !== 'undefined') window.addEventListener('resize', this.handleResize);
-				this.handleResize();
-			} else {
-				if (typeof window !== 'undefined') window.removeEventListener('keydown', this.handleKeyboardInput);
-				if (typeof window !== 'undefined') window.removeEventListener('resize', this.handleResize);
-			}
+  _createClass(Lightbox, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (nextProps.isOpen && nextProps.enableKeyboardInput) {
+        if (_utils2['default'].canUseDOM) window.addEventListener('keydown', this.handleKeyboardInput);
+        if (_utils2['default'].canUseDOM) window.addEventListener('resize', this.handleResize);
+        this.handleResize();
+      } else {
+        if (_utils2['default'].canUseDOM) window.removeEventListener('keydown', this.handleKeyboardInput);
+        if (_utils2['default'].canUseDOM) window.removeEventListener('resize', this.handleResize);
+      }
 
-			if (nextProps.isOpen) {
-				document.body ? document.body.style.overflow = 'hidden' : null;
-			} else {
-				document.body ? document.body.style.overflow = null : null;
-			}
-		}
-	}, {
-		key: 'close',
-		value: function close(e) {
-			if (e.target.id !== 'react-images-container') return;
+      if (nextProps.isOpen && this.props.overflowHidden) {
+        if (_utils2['default'].canUseDOM) document.body.style.overflow = 'hidden';
+      } else {
+        if (_utils2['default'].canUseDOM) document.body.style.overflow = null;
+      }
+    }
+  }, {
+    key: 'close',
+    value: function close(e) {
+      if (e.target.id !== 'react-images-container') return;
 
-			this.props.backdropClosesModal && this.props.onClose && this.props.onClose();
-		}
-	}, {
-		key: 'gotoNext',
-		value: function gotoNext(event) {
-			if (this.props.currentImage === this.props.images.length - 1) return;
-			if (event) {
-				event.preventDefault();
-				event.stopPropagation();
-			}
-			this.props.onClickNext();
-		}
-	}, {
-		key: 'gotoPrev',
-		value: function gotoPrev(event) {
-			if (this.props.currentImage === 0) return;
-			if (event) {
-				event.preventDefault();
-				event.stopPropagation();
-			}
-			this.props.onClickPrev();
-		}
-	}, {
-		key: 'handleImageClick',
-		value: function handleImageClick(e) {
-			e.stopPropagation();
-			if (!this.props.onClickShowNextImage) return;
+      if (this.props.backdropClosesModal && this.props.onClose) {
+        this.props.onClose();
+      }
+    }
+  }, {
+    key: 'gotoNext',
+    value: function gotoNext(event) {
+      if (this.props.currentImage === this.props.images.length - 1) return;
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      this.props.onClickNext();
+    }
+  }, {
+    key: 'gotoPrev',
+    value: function gotoPrev(event) {
+      if (this.props.currentImage === 0) return;
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      this.props.onClickPrev();
+    }
+  }, {
+    key: 'handleImageClick',
+    value: function handleImageClick(e) {
+      if (!this.props.onClickShowNextImage) return;
 
-			this.gotoNext();
-		}
-	}, {
-		key: 'handleKeyboardInput',
-		value: function handleKeyboardInput(event) {
-			if (event.keyCode === 37) {
-				this.gotoPrev();
-			} else if (event.keyCode === 39) {
-				this.gotoNext();
-			} else if (event.keyCode === 27) {
-				this.props.onClose();
-			} else {
-				return false;
-			}
-		}
-	}, {
-		key: 'handleResize',
-		value: function handleResize() {
-			this.setState({
-				windowHeight: typeof window !== 'undefined' ? window.innerHeight : 0
-			});
-		}
-	}, {
-		key: 'renderArrowNext',
-		value: function renderArrowNext() {
-			if (this.props.currentImage === this.props.images.length - 1) return;
-			var classes = this.props.sheet.classes;
+      this.gotoNext(e);
+    }
+  }, {
+    key: 'handleImageLoad',
+    value: function handleImageLoad(e, index) {
+      // console.log('image', index, 'loaded', e);
+    }
+  }, {
+    key: 'handleKeyboardInput',
+    value: function handleKeyboardInput(event) {
+      if (event.keyCode === 37) {
+        this.gotoPrev(event);
+        return true;
+      } else if (event.keyCode === 39) {
+        this.gotoNext(event);
+        return true;
+      } else if (event.keyCode === 27) {
+        this.props.onClose();
+        return true;
+      }
+      return false;
+    }
+  }, {
+    key: 'handleResize',
+    value: function handleResize() {
+      if (!_utils2['default'].canUseDOM) return;
+      this.setState({
+        windowHeight: window.innerHeight || 0
+      });
+    }
+  }, {
+    key: 'renderArrowNext',
+    value: function renderArrowNext() {
+      if (this.props.currentImage === this.props.images.length - 1) return null;
+      var classes = this.props.sheet.classes;
 
-			return _react2['default'].createElement(
-				'button',
-				{ title: 'Next (Right arrow key)', type: 'button', className: classes.arrow + ' ' + classes.arrowNext, onClick: this.gotoNext, onTouchEnd: this.gotoNext },
-				_react2['default'].createElement(_Icon2['default'], { type: 'arrowRight' })
-			);
-		}
-	}, {
-		key: 'renderArrowPrev',
-		value: function renderArrowPrev() {
-			if (this.props.currentImage === 0) return;
-			var classes = this.props.sheet.classes;
+      return _react2['default'].createElement(
+        'button',
+        { title: 'Next (Right arrow key)',
+          type: 'button',
+          className: classes.arrow + ' ' + classes.arrowNext,
+          onClick: this.gotoNext,
+          onTouchEnd: this.gotoNext
+        },
+        _react2['default'].createElement(_Icon2['default'], { type: 'arrowRight' })
+      );
+    }
+  }, {
+    key: 'renderArrowPrev',
+    value: function renderArrowPrev() {
+      if (this.props.currentImage === 0) return null;
+      var classes = this.props.sheet.classes;
 
-			return _react2['default'].createElement(
-				'button',
-				{ title: 'Previous (Left arrow key)', type: 'button', className: classes.arrow + ' ' + classes.arrowPrev, onClick: this.gotoPrev, onTouchEnd: this.gotoPrev },
-				_react2['default'].createElement(_Icon2['default'], { type: 'arrowLeft' })
-			);
-		}
-	}, {
-		key: 'renderCloseButton',
-		value: function renderCloseButton() {
-			if (!this.props.showCloseButton) return;
-			var classes = this.props.sheet.classes;
+      return _react2['default'].createElement(
+        'button',
+        { title: 'Previous (Left arrow key)',
+          type: 'button',
+          className: classes.arrow + ' ' + classes.arrowPrev,
+          onClick: this.gotoPrev,
+          onTouchEnd: this.gotoPrev
+        },
+        _react2['default'].createElement(_Icon2['default'], { type: 'arrowLeft' })
+      );
+    }
+  }, {
+    key: 'renderCloseButton',
+    value: function renderCloseButton() {
+      if (!this.props.showCloseButton) return null;
+      var classes = this.props.sheet.classes;
 
-			return _react2['default'].createElement(
-				'div',
-				{ className: classes.closeBar },
-				_react2['default'].createElement(
-					'button',
-					{ title: 'Close (Esc)', className: classes.closeButton, onClick: this.props.onClose },
-					_react2['default'].createElement(_Icon2['default'], { type: 'close' })
-				)
-			);
-		}
-	}, {
-		key: 'renderDialog',
-		value: function renderDialog() {
-			if (!this.props.isOpen) return;
-			var classes = this.props.sheet.classes;
+      return _react2['default'].createElement(
+        'div',
+        { className: classes.closeBar },
+        _react2['default'].createElement(
+          'button',
+          { title: 'Close (Esc)', className: classes.closeButton, onClick: this.props.onClose },
+          _react2['default'].createElement(_Icon2['default'], { type: 'close' })
+        )
+      );
+    }
+  }, {
+    key: 'renderDialog',
+    value: function renderDialog() {
+      if (!this.props.isOpen) return null;
+      var classes = this.props.sheet.classes;
 
-			return _react2['default'].createElement(
-				_Fade2['default'],
-				{ id: 'react-images-container', key: 'dialog', duration: 250, className: classes.container, onClick: this.close, onTouchEnd: this.close },
-				_react2['default'].createElement('span', { className: classes.contentHeightShim }),
-				_react2['default'].createElement(
-					'div',
-					{ className: classes.content },
-					this.renderCloseButton(),
-					this.renderImages(),
-					_react2['default'].createElement('span', { className: classes.figureShadow })
-				),
-				this.renderArrowPrev(),
-				this.renderArrowNext()
-			);
-		}
-	}, {
-		key: 'renderFooter',
-		value: function renderFooter(caption) {
-			var _props = this.props;
-			var currentImage = _props.currentImage;
-			var images = _props.images;
-			var showImageCount = _props.showImageCount;
-			var classes = this.props.sheet.classes;
+      return _react2['default'].createElement(
+        _Fade2['default'],
+        { id: 'react-images-container',
+          key: 'dialog',
+          duration: 250,
+          className: classes.container,
+          onClick: this.close,
+          onTouchEnd: this.close
+        },
+        _react2['default'].createElement('span', { className: classes.contentHeightShim }),
+        _react2['default'].createElement(
+          'div',
+          { className: classes.content },
+          this.renderCloseButton(),
+          this.renderImages()
+        ),
+        this.renderArrowPrev(),
+        this.renderArrowNext()
+      );
+    }
+  }, {
+    key: 'renderFooter',
+    value: function renderFooter(caption) {
+      var _props = this.props;
+      var currentImage = _props.currentImage;
+      var images = _props.images;
+      var showImageCount = _props.showImageCount;
+      var classes = this.props.sheet.classes;
 
-			if (!caption && !showImageCount) return;
+      if (!caption && !showImageCount) return null;
 
-			var imageCount = showImageCount ? _react2['default'].createElement(
-				'div',
-				{ className: classes.footerCount },
-				currentImage + 1,
-				' of ',
-				images.length
-			) : null;
-			var figcaption = caption ? _react2['default'].createElement(
-				'figcaption',
-				{ className: classes.footerCaption },
-				caption
-			) : null;
+      var imageCount = showImageCount ? _react2['default'].createElement(
+        'div',
+        { className: classes.footerCount },
+        currentImage + 1,
+        ' of ',
+        images.length
+      ) : null;
+      var figcaption = caption ? _react2['default'].createElement(
+        'figcaption',
+        { className: classes.footerCaption },
+        caption
+      ) : null;
 
-			return _react2['default'].createElement(
-				'div',
-				{ className: classes.footer },
-				imageCount,
-				figcaption
-			);
-		}
-	}, {
-		key: 'renderImages',
-		value: function renderImages() {
-			var _props2 = this.props;
-			var images = _props2.images;
-			var currentImage = _props2.currentImage;
-			var classes = this.props.sheet.classes;
-			var windowHeight = this.state.windowHeight;
+      return _react2['default'].createElement(
+        'div',
+        { className: classes.footer },
+        imageCount,
+        figcaption
+      );
+    }
+  }, {
+    key: 'renderImages',
+    value: function renderImages() {
+      var _this = this;
 
-			if (!images || !images.length) return;
+      var _props2 = this.props;
+      var images = _props2.images;
+      var currentImage = _props2.currentImage;
+      var classes = this.props.sheet.classes;
+      var windowHeight = this.state.windowHeight;
 
-			var srcset = undefined,
-			    sizes = undefined;
-			if (images[currentImage].srcset) {
-				srcset = images[currentImage].srcset.join();
-				sizes = '100vw';
-			}
+      if (!images || !images.length) return null;
 
-			return _react2['default'].createElement(
-				'figure',
-				{ key: 'image' + currentImage, className: classes.figure, style: { maxWidth: this.props.width } },
-				_react2['default'].createElement('img', {
-					className: classes.image,
-					onClick: this.handleImageClick,
-					onTouchEnd: this.handleImageClick,
-					sizes: sizes,
-					src: images[currentImage].src,
-					srcSet: srcset,
-					style: {
-						cursor: this.props.onClickShowNextImage ? 'pointer' : 'auto',
-						maxHeight: windowHeight
-					}
-				}),
-				this.renderFooter(images[currentImage].caption)
-			);
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var classes = this.props.sheet.classes;
+      var image = images[currentImage];
 
-			return _react2['default'].createElement(
-				_Portal2['default'],
-				null,
-				this.renderDialog()
-			);
-		}
-	}]);
+      var srcset = undefined;
+      var sizes = undefined;
 
-	return Lightbox;
+      if (image.srcset) {
+        srcset = image.srcset.join();
+        sizes = '100vw';
+      }
+
+      return _react2['default'].createElement(
+        'figure',
+        { key: 'image ' + currentImage,
+          className: classes.figure,
+          style: { maxWidth: this.props.width }
+        },
+        _react2['default'].createElement(
+          _reactSwipeable2['default'],
+          { onSwipedLeft: this.gotoNext, onSwipedRight: this.gotoPrev },
+          _react2['default'].createElement('img', { className: classes.image,
+            onClick: this.handleImageClick,
+            onLoad: function (e) {
+              return _this.handleImageLoad(e, currentImage);
+            },
+            sizes: sizes,
+            src: image.src,
+            srcSet: srcset,
+            style: {
+              cursor: this.props.onClickShowNextImage ? 'pointer' : 'auto',
+              maxHeight: windowHeight
+            }
+          })
+        ),
+        this.renderFooter(images[currentImage].caption)
+      );
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2['default'].createElement(
+        _Portal2['default'],
+        null,
+        this.renderDialog()
+      );
+    }
+  }]);
+
+  return Lightbox;
 })(_react.Component);
 
-;
-
 Lightbox.displayName = 'Lightbox';
+
 Lightbox.propTypes = {
-	backdropClosesModal: _react.PropTypes.bool,
-	currentImage: _react.PropTypes.number,
-	enableKeyboardInput: _react.PropTypes.bool,
-	images: _react.PropTypes.arrayOf(_react.PropTypes.shape({
-		src: _react.PropTypes.string.isRequired,
-		srcset: _react.PropTypes.array,
-		caption: _react.PropTypes.string
-	})).isRequired,
-	isOpen: _react.PropTypes.bool,
-	onClickShowNextImage: _react.PropTypes.bool,
-	onClickNext: _react.PropTypes.func.isRequired,
-	onClickPrev: _react.PropTypes.func.isRequired,
-	onClose: _react.PropTypes.func.isRequired,
-	showCloseButton: _react.PropTypes.bool,
-	showImageCount: _react.PropTypes.bool,
-	width: _react.PropTypes.number
+  backdropClosesModal: _react.PropTypes.bool,
+  currentImage: _react.PropTypes.number,
+  enableKeyboardInput: _react.PropTypes.bool,
+  sheet: _react.PropTypes.object,
+  images: _react.PropTypes.arrayOf(_react.PropTypes.shape({
+    src: _react.PropTypes.string.isRequired,
+    srcset: _react.PropTypes.array,
+    caption: _react.PropTypes.string
+  })).isRequired,
+  isOpen: _react.PropTypes.bool,
+  onClickShowNextImage: _react.PropTypes.bool,
+  onClickNext: _react.PropTypes.func.isRequired,
+  onClickPrev: _react.PropTypes.func.isRequired,
+  onClose: _react.PropTypes.func.isRequired,
+  showCloseButton: _react.PropTypes.bool,
+  showImageCount: _react.PropTypes.bool,
+  width: _react.PropTypes.number,
+  overflowHidden: _react.PropTypes.bool
 };
+
 Lightbox.defaultProps = {
-	enableKeyboardInput: true,
-	currentImage: 0,
-	onClickShowNextImage: true,
-	showCloseButton: true,
-	showImageCount: true,
-	width: 900
+  enableKeyboardInput: true,
+  currentImage: 0,
+  onClickShowNextImage: true,
+  showCloseButton: true,
+  showImageCount: true,
+  width: 900,
+  overflowHidden: true
 };
 
 exports['default'] = (0, _reactJss2['default'])(Lightbox, _stylesDefault2['default']);
 module.exports = exports['default'];
 
-},{"./Fade":1,"./Icon":2,"./Portal":3,"./styles/default":8,"jss":undefined,"jss-camel-case":undefined,"jss-nested":undefined,"jss-px":undefined,"jss-vendor-prefixer":undefined,"react":undefined,"react-jss":undefined}]},{},[]);
+},{"./Fade":1,"./Icon":2,"./Portal":3,"./styles/default":8,"./utils":9,"jss":undefined,"jss-camel-case":undefined,"jss-nested":undefined,"jss-px":undefined,"jss-vendor-prefixer":undefined,"react":undefined,"react-jss":undefined,"react-swipeable":undefined}]},{},[]);
